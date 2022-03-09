@@ -1,0 +1,402 @@
+body {
+    background-color: #E5E5E5;
+}
+
+#searchBox {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 3em;
+}
+
+.searchHeader {
+    background-image: url("./images/banner.jpg");
+    background-position: center top;
+    padding-top: 1em;
+    padding-left: 2.25em;
+    padding-right: 2.25em;
+    padding-bottom: 0.25em;
+    color: #4d4d4d; 
+    font-weight: 100;
+    box-shadow: 0 0.1em 0.1em 0.1em #C1C1C1;
+}
+
+#searchBox > form {
+    background-color: white;
+    padding: 1.5em 2em;
+    color: #4764AA;
+    font-weight: 200;
+    box-shadow: 0 0.1em 0.1em 0.1em #C1C1C1;
+}
+
+.mandatoryMarker {
+    color: #FD7F08;
+}
+
+.streetInput > input {
+    margin-top: 0.5em;
+    display: block;
+    width: 100%;
+    border: 1px solid #c2c1c5;
+    border-radius: 0;
+}
+
+.streetInput > input:focus {
+    outline-style: solid;
+    outline-color:#4d4d4d;
+}
+
+.searchLower {
+    margin-top: 1em;
+    margin-bottom: 1.25em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cityInput {
+    width: 50%
+}
+
+.cityInput > input {
+    display: block;
+    /* width: 100%; */
+    margin-top: 0.5em;
+    border: 1px solid #c2c1c5;
+    border-radius: 0;
+}
+
+.cityInput > input:focus {
+    outline-style: solid;
+    outline-color:#4d4d4d;
+}
+
+.stateSelect {
+    width: 50%;
+}
+
+.stateSelect > select {
+    display: block;
+    width: 103%;
+    margin-top: 0.5em;
+    background-color: white;
+    border: 1px solid #c2c1c5;
+    border-radius: 0;
+    padding: 2px;
+}
+
+.stateSelect > select:focus {
+    outline-style: solid;
+    outline-color:#4d4d4d;
+    outline-width: thin;
+}
+
+.searchLower {
+    display: flex;
+}
+
+.searchFooter {
+    padding-top: 1.25em;
+    border-top: 1.5px solid #4764AA;
+}
+
+.auto-location {
+    margin-bottom: 1.5em;
+}
+
+#auto-location-checkbox {
+    margin: 0;
+}
+
+.formButton {
+    padding: 0.75em 1.25em;
+    border: 0px;
+    border-radius: 0;
+    color: white;
+    font-weight: 250;
+}
+
+#submitButton {
+    border-bottom: 0.25em solid #30405F;
+    background-color: #4764AA;
+}
+
+#clearButton {
+    border-bottom: 0.25em solid #F67C0C;
+    background-color: #FEB00A;
+}
+
+.formButton:hover {
+    filter:brightness(110%);
+}
+
+.formButton:active {
+    filter:brightness(95%);
+}
+
+.formButton:focus {
+    outline: 0.05em solid black;
+}
+
+#weatherCard {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 2em;
+    background-color: white;
+    box-shadow: 0 0.2em 0 0.05em #C1C1C1;
+    padding: 0.5em 1.6em;
+}
+
+#cardLocation {
+    margin: 10px auto 16px auto;
+    font-weight: 100;
+    font-size: 1.75em;
+    color: #8C8C8C;
+}
+
+#weatherCard:hover {
+    box-shadow: 0 0.25em 0.5em 0.25em #C1C1C1;
+}
+
+#cardImgTempContainer {
+    height: 128.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cardMainImg {
+    height: 128.5px;
+}
+
+#cardMainTemp {
+    font-size: 7.5em;
+    font-weight: 100;
+    color: #8C8C8C;
+    margin-top: 0.15em;
+    margin-bottom: 0;
+    margin-right: 0.25em;
+}
+
+#cardImgLabel {
+    margin-top: 0.75em;
+    margin-left: 0.85em;
+    font-size: 1.10em;
+    color: #8C8C8C;
+}
+
+#cardDetailsRow {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 0;
+}
+
+.cardDetailsColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardDetailsColumn > img {
+    width: 32px;
+    max-width: 100%;
+}
+
+.cardDetailsColumn > p {
+    color: #8C8C8C;
+}
+
+#weatherTable {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 2em;
+    background-color: #DFDFDF;
+    box-shadow: 0 0.1em 0.1em 0.1em #C1C1C1;
+}
+
+#tableContainerColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.tableRow {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    padding: 0.5em 0;
+}
+
+.tableRow > div {
+    width: 96px;
+    max-width: 100%;
+}
+
+.tableRow > div > img {
+    height: 51px;
+    width: 51px;
+    float: left;
+}
+
+.tableRow > div > p {
+    float: left;
+    margin-left: 0.8em;
+}
+
+.tableRow:hover {
+    cursor: pointer;
+}
+
+#tableHeading {
+    margin-top: 0;
+    background-color: #4764AA;
+    padding: 0;
+}
+
+#tableHeading:hover {
+    cursor: default;
+}
+
+#tableHeadingDate {
+    width: 200px;   
+    text-align: center;
+}
+
+#tableHeadingStatus {
+    width: 250px;
+    text-align: center;
+}
+.tableRowTempHigh {
+    width: 76px;
+    text-align: center;
+}
+.tableRowTempLow {
+    width: 76px;
+    text-align: center;
+}
+.tableRowWindSpeed {
+    width: 87px;
+    text-align: center;
+}
+
+#dailyWeatherHeading {
+    margin: 52px auto;
+    font-weight: 100;
+    width: 100%;
+    text-align: center;
+}
+
+#dailyWeatherBox {
+    background: linear-gradient(rgb(255, 255, 255), #5a6fa1);
+    box-shadow: 0 0.2em 0 0.05em #C1C1C1;
+    width: 450px;
+    margin: 0 auto;
+    padding: 10px 16px;
+}
+
+#dailyWeatherBox:hover {
+    box-shadow: 0 0.25em 0.5em 0.25em #C1C1C1;
+}
+
+#dailyWeatherSubHeadings {
+    display: flex;
+    justify-content: space-between;
+}
+
+#dailyWeatherSubHeadings-text {
+    color: #364e86;
+    font-size: 1.35em; 
+}
+
+#dailyWeatherDate {
+    margin-top: 14px;
+    margin-bottom: 24px;
+}
+
+#dailyWeatherStatus {
+    margin: 24px 0;
+}
+
+#dailyWeatherTempHighLow {
+    margin: 24px 0;
+    font-size: 1.55em;
+}
+
+#dailyWeatherImage {
+    height: 150px;
+}
+
+#dailyWeatherContent {
+    display: flex;
+    justify-content: center;
+}
+
+#dailyWeatherDetailNames {
+    text-align: right;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+#dailyWeatherDetailNames > p {
+    height: 16.5px;
+    margin: 10px auto;
+}
+
+#dailyWeatherDetailValues {
+    margin-left: 0.25em;
+    color: white;
+    font-weight: 800;
+    font-size: 1em;
+}
+
+#dailyWeatherDetailValues > p {
+    height: 16.5px;
+    margin: 10px auto;
+}
+
+#weatherChartsHeading {
+    margin-top: 52px;
+    margin-bottom: 24px;
+    font-weight: 100;
+    width: 100%;
+    text-align: center;
+}
+
+#weatherChartsButton {
+    display: block;
+    max-width:48px;
+    max-height:48px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+#weatherChartsButton:hover {
+    cursor: pointer;
+}
+
+.weatherChart {
+    display: none;
+    margin: 24px auto;
+    width: 825px;
+    height: 305px;
+}
+
+#tempRanges {
+    margin-top: 8px;
+}
+#hourlyWeather {
+    margin-top: 8px;
+}
+
+#errorMsg {
+    display: none;
+    width: 500px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 0 auto;
+    margin-top: 12px;
+    background-color: white;
+    box-shadow: 0 0.2em 0 0.05em #C1C1C1;
+    text-align: center;
+}

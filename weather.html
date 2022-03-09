@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="static/main.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/windbarb.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+</head>
+<body>
+    <div id="searchBox">
+        <div class="searchHeader">
+            <h3>Weather Search</h3>
+            <p>Fill out the form to get weather info!</p>
+        </div>
+        <form action="#" onsubmit="submitHandler(event)">
+            <div class="searchUpper">
+                <div class="streetInput">
+                    <label for="street">Street</label><span class="mandatoryMarker">*</span>
+                    <input name="street" type="text" id="street" required>
+                </div>
+            </div>
+            <div class="searchLower">
+                <div class="cityInput">
+                    <label for="city">City</label><span class="mandatoryMarker">*</span>
+                    <input name="city" type="text" id="city" required> 
+                </div>
+                <div class="stateSelect">
+                    <label for="state">State</label><span class="mandatoryMarker">*</span>
+                    <select name="state" size="1" id="state" required>
+                        <option value="" id="defaultOption" selected>Select your state</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">Dist of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                      </select>
+                </div>
+            </div>
+            <div class="searchFooter">
+                <div class="auto-location">
+                    <label for="auto-location">Want us to auto-detect your location? Check here</label>
+                    <input type="checkbox" id="auto-location-checkbox">
+                </div>
+                <input type="submit" value="SUBMIT" id="submitButton" class="formButton">
+                <input type="reset" value="CLEAR" id="clearButton" class="formButton" onclick="clearHandler()">
+            </div>
+        </form>
+    </div>
+    <div id="errorMsg">No records have been found.</div>
+    <div id="weatherCard">
+        <h3 id="cardLocation">Location City, State</h3>
+        <div id="cardImgTempContainer">
+            <img id="cardMainImg" src="static/images/clear.svg" alt="Clear">
+            <p id="cardMainTemp"></p>
+        </div>
+        <p id="cardImgLabel">Clear</p>
+        <div id="cardDetailsRow">
+            <div class="cardDetailsColumn">
+                <p>Humidity</p>
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png" alt="Humidity">
+                <p id="cardHumidityValue">Amt</p>
+            </div>
+            <div class="cardDetailsColumn">
+                <p>Pressure</p>
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png " alt="Pressure">
+                <p id="cardPressureValue">Amt</p>
+            </div>
+            <div class="cardDetailsColumn">
+                <p>Wind Speed</p>
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png " alt="Wind Speed">
+                <p id="cardWindSpeedValue">Amt</p>
+            </div>
+            <div class="cardDetailsColumn">
+                <p>Visibility</p>
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png" alt="Visibility">
+                <p id="cardVisibilityValue">Amt</p>
+            </div>
+            <div class="cardDetailsColumn">
+                <p>Cloud Cover</p>
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png" alt="Cloud Cover">
+                <p id="cardCloudCoverValue">Amt</p>
+            </div>
+            <div class="cardDetailsColumn">
+                <p>UV Level</p>
+                <img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png" alt="UV Level">
+                <p id="cardUvLevelValue">Amt</p>
+            </div>
+        </div>
+    </div>
+    <div id="weatherTable">
+        <div id="tableContainerColumn">
+            <div id="tableHeading" class="tableRow">
+                <p id="tableHeadingDate">Date</p>
+                <p id="tableHeadingStatus">Status</p>
+                <p id="tableHeadingTempHigh">Temp High</p>
+                <p id="tableHeadingTempLow">Temp Low</p>
+                <p id="tableHeadingWindSpeed">Wind Speed</p>
+            </div>
+            <!-- Generate and add table entries like the following with javascript when user asks for weather data -->
+            <!-- <div class="tableRow">
+                <p>Wednesday, 07 Sep, 2021</p>
+                <div>
+                    <img src="static/images/fog.svg" alt="Fog"><p>Fog</p>
+                    <br style="clear: both;">
+                </div>
+                <p class="tableRowTempHigh">86.52</p>
+                <p class="tableRowTempLow">64.04</p>
+                <p class="tableRowWindSpeed">8.7</p>
+            </div> -->
+        </div>
+    </div>
+    <h1 id="dailyWeatherHeading">Daily Weather Details</h1>
+    <div id="dailyWeatherBox">
+        <div id="dailyWeatherSubHeadings">
+            <div id="dailyWeatherSubHeadings-text">
+                <p id="dailyWeatherDate">Thursday, 09 Sep 2021</p>
+                <p id="dailyWeatherStatus">Light Fog</p>
+                <p id="dailyWeatherTempHighLow">90.88/64.87 F</p>
+            </div>
+            <img id="dailyWeatherImage" src="static/images/light_fog.svg">
+        </div>
+        <div id="dailyWeatherContent">
+            <div id="dailyWeatherDetailNames">
+                <p>Precipitation:</p>
+                <p>Chance of Rain:</p>
+                <p>Wind Speed:</p>
+                <p>Humidity:</p>
+                <p>Visibility:</p>
+                <p>Sunrise/Sunset:</p>
+            </div>
+            <div id="dailyWeatherDetailValues">
+                <p id="dailyPrecipitationValue">Test</p>
+                <p id="dailyPrecipitationChanceValue">Test</p>
+                <p id="dailyWindSpeedValue">Test</p>
+                <p id="dailyHumidityValue">Test</p>
+                <p id="dailyVisibilityValue">Test</p>
+                <p id="dailySunriseSunsetValue">Test</p>
+            </div>
+        </div>
+    </div>
+    <h1 id="weatherChartsHeading">Weather Charts</h1>
+    <img id="weatherChartsButton" src="static/images/point-down-512.png" alt="Open Charts">
+    <div id="tempRanges" class="weatherChart"></div>
+    <div id="hourlyWeather" class="weatherChart"></div>
+    <script src="static/main.js"></script>
+</body>
+</html>
